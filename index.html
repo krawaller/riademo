@@ -3,24 +3,7 @@
 	<head>
 	</head>
 	<body>
-		<script type="text/javascript" src="lib/require/require.js"></script>
-		<script type="text/javascript">
-			require.config({
-				paths: {
-					sweet: "lib/sweet/sweet",
-					"coffee-script": "lib/coffee-script",
-					sweeten: "lib/require/sweeten",
-					cs: "lib/require/cs",
-					parser: "lib/sweet/parser",
-					expander: "lib/sweet/expander",
-					escodegen: "lib/sweet/escodegen",
-					"es6-collections": "lib/sweet/es6-collections",
-					underscore: "lib/underscore-amd"
-				}
-			});
-		</script>
-		<script type="text/javascript">
-			require(['sweeten!sweettest','cs!coffeetest']);
-		</script>
+		<div id="logger"></div>
+		<script data-main="main.js" type="text/javascript" src="lib/require/require-jquery.js"></script>
 	</body>
 </html>

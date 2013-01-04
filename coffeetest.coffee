@@ -1,3 +1,6 @@
-coffeelogger = (arg)-> console.log arg+" PRINTED BY COFFEESCRIPT! :)"
+define ["logger"], (log)->
 
-coffeelogger "some log text"
+	coffeelogger = (arg)->
+		log arg+" PRINTED BY COFFEESCRIPT! :)"
+
+	-> coffeelogger "some log text"
