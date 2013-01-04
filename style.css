@@ -1,0 +1,8 @@
+a.doclink {
+	position:fixed;
+	height: 20px;
+	width: 100px;
+	top: 0;
+	right: 0;
+	background-color: #CCC;
+}
