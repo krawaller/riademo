@@ -1,7 +1,9 @@
+console.log("...LOADING main.js");
+
 //We configure require with paths to our modules, so we can reference them by name when we include them.
 require.config({
 	paths: {
-		jQ: "lib/jquery/jquery",
+		jQ: "lib/jquery/jquery-1.9.0",
 		sweet: "lib/sweet/sweet",
 		"coffee-script": "lib/coffee-script",
 		sweeten: "lib/require/sweeten",
@@ -10,13 +12,40 @@ require.config({
 		expander: "lib/sweet/expander",
 		escodegen: "lib/sweet/escodegen",
 		"es6-collections": "lib/sweet/es6-collections",
-		underscore: "lib/underscore-amd"
+		underscore: "lib/underscore/underscore-1.4.3.min",
+		purebackbone: "lib/backbone/backbone-0.9.10.min",
+		"bb-rel":"lib/backbone/backbone-relational",
+		"bb-loc":"lib/backbone/backbone.localStorage.async",
+		"backbone": "lib/backbone/backbone"
+	},
+	shim: {
+		sweet: {deps: ["jQ"]},
+		underscore: {
+			/*init: function(){
+				console.log("......shimming underscore");
+				return this._.noConflict();
+			}*/
+		},
+		jQ: {
+			init: function(){
+				console.log("......shimming jQuery");
+				return this.jQuery.noConflict(true);
+			}
+		},
+		purebackbone: {
+			deps: ["jQ","underscore"],
+			exports: "Backbone"
+		},
+		"bb-rel": ["purebackbone","underscore"],
+		"bb-loc": ["purebackbone","underscore"]
 	}
 });
 
 
 //The main application! It will simply load the testmodules for coffeescript and sweet makros, and execute them.
-define(["sweeten!sweettest","cs!coffeetest"],function(sweet,coffee){
+define(["cs!coffeetest","sweeten!sweettest","backbone"],function(coffee,sweet,Backbone){
+	console.log("...EXECUTING MAIN!");
 	sweet();
 	coffee();
+	console.log("Typeof Backbone.LocalStorage is",typeof Backbone.LocalStorage)
 });

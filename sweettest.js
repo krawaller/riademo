@@ -1,4 +1,6 @@
-define(["logger"],function(log){
+console.log("...LOADING sweettest.js");
+
+define(["logger","jquery"],function(log){
 
 	macro fn {
 		// this case matches a named function definition

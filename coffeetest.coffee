@@ -1,3 +1,5 @@
+console.log("...LOADING coffeetest.js");
+
 define ["logger"], (log)->
 
 	coffeelogger = (arg)-> log arg+" PRINTED BY COFFEESCRIPT! :)"
