@@ -7,6 +7,10 @@
 	<body>
 		<script type="text/javascript" src="lib/jasmine/jasmine.js"></script>
 		<script type="text/javascript" src="lib/jasmine/jasmine-html.js"></script>
-		<script data-main="test.js" type="text/javascript" src="lib/require/require.js"></script>
+		<script type="text/javascript">
+ 			// will cause bootstrap.js to start testsuite instead of app
+			window.TESTING = true;
+		</script>
+		<script data-main="bootstrap.js" type="text/javascript" src="lib/require/require.js"></script>
 	</body>
 </html>

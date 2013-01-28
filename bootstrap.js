@@ -1,4 +1,4 @@
-console.log("...LOADING main.js");
+console.log("...LOADING bootstrap.js");
 
 //We configure require with paths to our modules, so we can reference them by name when we include them.
 require.config({
@@ -16,7 +16,8 @@ require.config({
 		purebackbone: "lib/backbone/backbone-0.9.10.min",
 		"bb-rel":"lib/backbone/backbone-relational",
 		"bb-loc":"lib/backbone/backbone.localStorage.async",
-		"backbone": "lib/backbone/backbone"
+		backbone: "lib/backbone/backbone",
+		mymodel: "src/mymodel"
 	},
 	shim: {
 		sweet: {deps: ["jQ"]},
@@ -41,11 +42,11 @@ require.config({
 	}
 });
 
-
-//The main application! It will simply load the testmodules for coffeescript and sweet makros, and execute them.
-define(["cs!coffeetest","sweeten!sweettest","backbone"],function(coffee,sweet,Backbone){
-	console.log("...EXECUTING MAIN!");
-	sweet();
-	coffee();
-	console.log("Typeof Backbone.LocalStorage is",typeof Backbone.LocalStorage)
-});
+// Run test suite or start app, depending on where we were included
+if (window.TESTING){
+	require(["tests/test"]);
+} else {
+	require(["app"],function(App){
+		App.start();
+	});
+}
