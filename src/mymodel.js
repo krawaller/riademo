@@ -1,7 +1,7 @@
 define(["backbone"],function(Backbone){
 	return Backbone.RelationalModel.extend({
 		initialize: function(opts){
-			this.set("mood",(opts && opts.mood) || 0);
+			this.set("mood",(opts && opts.mood) || 0);
 		},
 		getMoodDescription: function(){
 			var mood = this.get("mood");
