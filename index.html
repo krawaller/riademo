@@ -11,5 +11,10 @@
 		<hr/>
 		<div id="logger"></div>
 		<script data-main="bootstrap.js" type="text/javascript" src="lib/require/require.js"></script>
+		<script type="text/javascript">
+			require(["app"],function(App){
+				App.start();
+			});
+		</script>
 	</body>
 </html>

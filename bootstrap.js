@@ -41,12 +41,3 @@ require.config({
 		"bb-loc": ["purebackbone","underscore"]
 	}
 });
-
-// Run test suite or start app, depending on where we were included
-if (window.TESTING){
-	require(["tests/test"]);
-} else {
-	require(["app"],function(App){
-		App.start();
-	});
-}
